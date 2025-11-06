@@ -1,4 +1,4 @@
-# Kronauer Lab - Ooceraea biroi CNS Brain Template 2023
+# Kronauer Lab - Ooceraea biroi CNS Brain Template 2025
 
 ![ants](https://www.rockefeller.edu/research/uploads/www.rockefeller.edu/sites/8/2017/12/clonal_ants7-2400x800.png)
 
