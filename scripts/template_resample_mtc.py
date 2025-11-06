@@ -147,10 +147,10 @@ for basefile in basefiles:
 # for every basefile, make sure there is an GenericAffine.mat file
 basefile_to_affine = {}
 for basefile in basefiles:
-    # find all files that start with basefile and end with GenericAffine.mat
-    affine_files = [file for file in os.listdir(os.path.join(input_dir, "syn")) if file.startswith(basefile) and file.endswith("GenericAffine.mat")]
-    # make sure there is only one GenericAffine.mat file
-    assert len(affine_files) == 1, f"Input directory does not contain {basefile}<xxx>GenericAffine.mat file."
+    # find all files that start with basefile and end with Affine.txt
+    affine_files = [file for file in os.listdir(os.path.join(input_dir, "syn")) if file.startswith(basefile) and file.endswith("Affine.txt")]
+    # make sure there is only one Affine file
+    assert len(affine_files) == 1, f"Input directory does not contain {basefile}Affine.txt file."
     # add basefile and GenericAffine.mat file to dictionary
     basefile_to_affine[basefile] = affine_files[0]
     print(f"Found {affine_files[0]}.")
@@ -239,8 +239,11 @@ if args.num_workers == 1:
         warp_file(index)
 else:
     assert args.num_workers > 1, "Number of workers must be greater than 1."
-    assert args.num_workers <= len(original_files), "Number of workers must be less than or equal to number of files."
     assert args.num_workers <= os.cpu_count(), "Number of workers must be less than or equal to number of CPUs."
+    # if number of workers is greater than number of files, set number of workers to number of files
+    if args.num_workers > len(original_files):
+        args.num_workers = len(original_files)
+        print(f"Number of workers set to {args.num_workers}.")
     # resample each file in parallel using joblib
     Parallel(n_jobs=args.num_workers)(delayed(warp_file)(index) for index in range(len(original_files)))
 

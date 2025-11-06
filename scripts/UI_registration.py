@@ -18,13 +18,14 @@
 #   - number of threads is not a positive integer
 #   - file names or directory names have spaces in them
 
+import glob
+import os
 ## START OF CODE
 # import the necessary packages
 import sys
-import os
-import glob
-from PyQt5 import QtWidgets, QtCore, QtGui
 import time
+
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 about_message ="""
 Welcome to the Kronauer Lab Template Registration Toolkit!
@@ -180,7 +181,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.last_row = QtWidgets.QHBoxLayout()
         self.num_iterations_label = QtWidgets.QLabel("Number of Iterations:")
         self.num_iterations_textbox = QtWidgets.QLineEdit()
-        self.num_iterations_textbox.setText("30x90x20x8")
+        self.num_iterations_textbox.setText("30x30x30x90x20x8")
         self.num_iterations_textbox.textChanged.connect(self.check_num_iterations)
         self.last_row.addWidget(self.num_iterations_label)
         self.last_row.addWidget(self.num_iterations_textbox)

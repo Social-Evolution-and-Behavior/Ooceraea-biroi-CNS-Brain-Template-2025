@@ -203,3 +203,8 @@ group_registration/*/
 # Ignore numpy files in all subfolders
 **/*.npy
 **/*.npz
+
+# Ignore all folders named temp in all subfolders
+**/temp*/
+
+type1.json

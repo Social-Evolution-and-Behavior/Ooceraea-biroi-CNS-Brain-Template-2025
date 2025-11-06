@@ -6,7 +6,7 @@ import numpy as np
 import nrrd
 import matplotlib.pyplot as plt
 
-results_dir = '../../results/obiroi_brain_20231205_1133/syn'
+results_dir = '../../results/obiroi_cns_mtc_20231229_1450/syn'
 # get all the files in the results directory
 files = os.listdir(results_dir)
 # keep only warp files
